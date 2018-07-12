@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>States</title>
+</head>
+<body>
+    <header>
+        <h1>States</h1>
+    </header>
+    <main>
+        <ul>
+            <li th:each="state : ${states}">
+                <a 
+                    th:href="|@{/states/}${state.abbreviation}|"
+                    th:text="${state.name}"
+                ></a>
+            </li>
+        </ul>
+
+        <hr />
+		<form action="/states" method="POST"> 
+			<label>State Name: <input type="text" name="stateName" /></label>
+            <label>State Abbreviation: <input type="text" name="stateAbbreviation" /></label>
+            <label>State Motto: <input type="text" name="stateMotto" /></label>	
+            <label>State Fish Name: <input type="text" name="stateFish" /></label>	
+            <label>State Fish Latin Name: <input type="text" name="stateFishBinomialNomenclature" /></label>
+            <label>State Fish Image URL: <input type="text" name="stateFishImgUrl" /></label>	
+	
+			
+			<input type="submit" value="Submit" />			
+		</form>
+        <hr />
+        
+    </main>
+    
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Cities</title>
+</head>
+<body>
+    <header>
+        <h1>Cities</h1>
+    </header>
+    <main>
+        <ul>
+            <li th:each="city : ${state.cities}">
+                <a 
+                    th:href="|@{/states/}${state.abbreviation}@{/cities/}${city.id}|"
+                    th:text="${city.name}"
+                ></a>
+            </li>
+        </ul>
+        <a th:href="@{/states}">Back to States</a>
+            
+        <hr />
+        <form th:action="|/states/${state.abbreviation}/cities|" method="POST"> 
+            <label>City Name: <input type="text" name="cityName" /></label>
+            <label>City Population: <input type="text" name="cityPopulation" /></label>
+            <input type="submit" value="Submit" />			
+        </form>
+        <hr />
+        
+    </main>
+    
+</body>
+</html>

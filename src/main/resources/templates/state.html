@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title th:text="${state.name}"></title>
+</head>
+<body>
+    <header>
+        <h1 th:text="${state.name}"></h1>
+        <h3 th:text="${state.motto}"></h3>
+    </header>
+    <main>
+        <h2>
+            State Fish:
+            <a th:href="|@{/states/}${state.abbreviation}@{/fish}|" th:text="${state.fish}"></a>
+        </h2>
+        <ul>
+            <li th:each="city : ${state.cities}">
+                <a 
+                    th:href="|@{/states/}${state.abbreviation}@{/cities/}${city.id}|"
+                    th:text="${city.name}"
+                ></a>
+            </li>
+        </ul>
+        <a th:href="@{/states}">Back to States</a>
+        <br />  
+        <a th:href="|@{/states/}${state.abbreviation}@{/cities}">Add Cities</a>
+        
+    </main>
+    
+</body>
+</html>
